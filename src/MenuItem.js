@@ -15,6 +15,7 @@ const Touchable = Platform.select({
 });
 
 function MenuItem({
+  value,
   children,
   disabled,
   disabledTextColor,
@@ -37,7 +38,7 @@ function MenuItem({
       {...props}
     >
       <View style={[styles.container, style]}>
-        <Text
+        {value &&  (<Text
           ellipsizeMode={ellipsizeMode}
           numberOfLines={1}
           style={[
@@ -46,8 +47,10 @@ function MenuItem({
             textStyle,
           ]}
         >
-          {children}
+          {value}
         </Text>
+        )}
+        {children}
       </View>
     </Touchable>
   );
